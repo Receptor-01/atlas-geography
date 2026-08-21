@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; frame-src 'none'; form-action 'none'"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATLAS</title><link rel="stylesheet" href="node_modules/@fontsource/barlow-condensed/500.css"><link rel="stylesheet" href="node_modules/@fontsource/barlow-condensed/600.css"><link rel="stylesheet" href="node_modules/@fontsource/barlow-condensed/700.css"><link rel="stylesheet" href="node_modules/@fontsource/jetbrains-mono/400.css"><link rel="stylesheet" href="node_modules/@fontsource/jetbrains-mono/600.css"><link rel="stylesheet" href="node_modules/@fontsource/jetbrains-mono/700.css"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="refinements.css"></head>
+<body class="booting">
+  <div class="noise"></div>
+  <div id="bootScreen" class="boot-screen" aria-label="Atlas starting">
+    <div class="boot-frame"><i></i><i></i><i></i><i></i></div>
+    <div class="boot-orbit"><svg id="bootGlobe" viewBox="0 0 420 420" aria-hidden="true"></svg><span class="boot-reticle"></span><span class="boot-scan"></span></div>
+    <div class="boot-name">ATLAS</div>
+    <div class="boot-progress"><span></span></div>
+    <button id="bootLaunch" class="boot-launch" type="button"><span>LAUNCH</span></button>
+  </div>
+  <aside class="difficulty-control" aria-label="Answer difficulty"><div class="difficulty-rail"><div class="difficulty-notches"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><input id="difficultySlider" type="range" min="2" max="8" step="1" value="4" aria-label="Number of answer choices"></div></aside>
+  <main class="shell">
+    <div id="lightbar" class="lightbar"></div>
+
+    <section class="quiz-card">
+      <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+      <nav class="mode-panel" aria-label="Quiz mode"><button class="active" data-quiz-mode="flag">FLAG</button><button data-quiz-mode="shape">SHAPE</button><button data-quiz-mode="capital">CAPITAL</button></nav>
+      <div class="preview-row"><button id="previousQuestion" class="previous-question" aria-label="Previous question"><span>❮</span></button><div class="flag-frame" id="visualFrame"><div class="scan"></div><img id="flag" alt="Country flag"><div id="capitalQuestion" class="capital-question"></div><svg id="countryMap" class="country-map" viewBox="0 0 760 430" role="img" aria-label="Country outline and capital location"></svg><div id="flagMemory" class="flag-memory"><img id="memoryFlag" alt="Reference flag"></div><div id="intel" class="intel"><div class="intel-country"><small>COUNTRY</small><strong id="intelCountry"></strong></div><div><small>CAPITAL</small><strong id="intelCapital"></strong></div><div><small>POPULATION</small><strong id="intelPopulation"></strong></div></div></div><button id="nextQuestion" class="next-question" aria-label="Skip animation"><span>❯</span></button></div>
+      <div id="answers" class="answers"></div>
+    </section>
+
+    <footer>
+      <button id="standbyToggle" class="standby-toggle"><span><small>OPERATOR MODE</small><b id="modeLabel">ACTIVE</b></span><u class="mode-light" aria-hidden="true"></u><i><em></em></i></button>
+      <div class="footer-links"><button id="howToButton" class="how-to-button">HOW TO USE</button><button id="creditsButton" class="credits-button">CREDITS</button></div>
+    </footer>
+  </main>
+  <section id="creditsPage" class="credits-page" aria-hidden="true">
+    <button id="creditsClose" class="credits-close" aria-label="Return to Atlas">×</button>
+    <svg id="creditsGlobe" class="credits-globe" viewBox="0 0 800 800" aria-hidden="true"></svg>
+  </section>
+  <section id="howToPage" class="how-to-page" aria-hidden="true">
+    <button id="howToClose" class="credits-close" aria-label="Return to Atlas">×</button>
+    <div class="how-to-content">
+      <header><small>ATLAS</small><h2>HOW TO USE</h2><p>Learn countries, flags, and capitals one question at a time.</p></header>
+      <div class="how-to-modes">
+        <article><b>FLAG</b><span>Look at the flag and choose the country it belongs to.</span></article>
+        <article><b>SHAPE</b><span>Look at the country outline and choose the correct country.</span></article>
+        <article><b>CAPITAL</b><span>Look at the capital city and choose its country.</span></article>
+      </div>
+      <div class="how-to-notes">
+        <p><strong>Answer a question</strong><span>Click one of the answer buttons. The correct country, capital, flag, and location will then be shown.</span></p>
+        <p><strong>Active and Standby</strong><span>Use Active mode to answer yourself. Standby mode automatically plays questions for passive learning.</span></p>
+        <p><strong>Change difficulty</strong><span>Move your pointer to the side of the window to reveal the difficulty slider. Choose between 2 and 8 answers.</span></p>
+        <p><strong>Move between questions</strong><span>Use the left and right arrow buttons beside the preview to revisit or skip a question.</span></p>
+      </div>
+    </div>
+  </section>
+  <script src="node_modules/d3/dist/d3.min.js"></script><script src="node_modules/topojson-client/dist/topojson-client.min.js"></script><script src="app.js"></script>
+</body></html>
