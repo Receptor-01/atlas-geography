@@ -17,7 +17,10 @@
     "start": "electron .",
     "check": "node --check main.js && node --check preload.js && node --check app.js && npm audit --omit=dev",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder --win nsis portable"
+    "dist": "electron-builder --win nsis portable",
+    "build:web": "node scripts/build-web.mjs",
+    "preview:web": "wrangler dev",
+    "deploy:web": "wrangler deploy"
   },
   "dependencies": {
     "@fontsource/barlow-condensed": "^5.2.6",
@@ -33,7 +36,8 @@
   },
   "devDependencies": {
     "electron": "43.4.1",
-    "electron-builder": "26.15.3"
+    "electron-builder": "26.15.3",
+    "wrangler": "^4.133.0"
   },
   "build": {
     "appId": "com.atlas.geography",

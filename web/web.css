@@ -1,0 +1,30 @@
+/* Web-only adjustments: retain the desktop app's visual identity. */
+button:focus-visible,input:focus-visible { outline:2px solid var(--cyan); outline-offset:4px; }
+.web-difficulty-label { display:none; }
+.load-error { position:fixed; bottom:0; inset-inline:0; z-index:1100; margin:0; padding:16px; background:#36200c; color:#fff; text-align:center; font-size:13px; }
+@media (max-width:800px) {
+  .difficulty-control,.difficulty-control:hover,.difficulty-control:focus-within { position:relative; inset:auto; width:100%; height:48px; opacity:1; transform:none; display:flex; justify-content:center; margin:8px 0; }
+  .difficulty-rail { transform:none; width:180px; height:32px; }
+  #difficultySlider { writing-mode:horizontal-tb; direction:ltr; width:180px; height:8px; transform:none; position:relative; inset:auto; }
+  #difficultySlider::-webkit-slider-thumb { width:22px; height:22px; }
+  .difficulty-notches { display:none; }
+  .web-difficulty-label { display:block; font-size:9px; letter-spacing:1px; color:#a7b0b4; }
+}
+@media (max-width:600px) {
+  .shell { width:calc(100% - 24px); padding-top:12px; }
+  .quiz-card { padding:18px 8px; min-height:0; }
+  .preview-row { width:100%; gap:2px; }
+  .preview-row .flag-frame { width:calc(100% - 64px); height:250px; }
+  .previous-question,.next-question { width:30px; min-width:30px; }
+  .answers { width:100%; gap:8px; }
+  .answer { min-height:62px; height:auto; padding:12px 9px; font-size:17px; letter-spacing:.4px; }
+  .answer b { display:none; }
+  .intel { width:100%; }
+  .intel>div { padding:7px; }
+  .intel strong { font-size:14px; }
+  footer { gap:10px; flex-wrap:wrap; }
+  .how-to-page { display:block; padding:64px 20px 30px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
+}

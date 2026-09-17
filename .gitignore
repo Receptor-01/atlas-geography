@@ -1,4 +1,6 @@
 node_modules/
+dist-web/
+.wrangler/
 dist/
 out/
 *.log

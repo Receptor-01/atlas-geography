@@ -1,6 +1,27 @@
 # Atlas
 
-Atlas is a desktop geography trainer for learning national flags, country shapes, and capital cities.
+Atlas is a geography trainer for learning national flags, country shapes, and capital cities, available as a desktop app and a browser game.
+
+## Browser version
+
+Use Node.js 24, then run `npm ci`, `npm run build:web`, and `npm run preview:web`.
+The generated `dist-web/` directory contains only public browser assets. It reuses the desktop game's code and loads bundled geography data from the same website. No accounts, database, payment service, or external API is required. Preferences and quiz progress remain in this browser on this device; they do not sync with the desktop app. The first web version requires a connection to load and does not install an offline service worker.
+
+### Publish on Cloudflare
+
+Create a new Workers application connected to `Receptor-01/atlas-geography`:
+
+- Project name: `atlas-geography`
+- Production branch: `main`
+- Build command: `npm run build:web && node scripts/check-web.mjs`
+- Deploy command: `npx wrangler deploy`
+- Root directory: leave blank
+- Node version: 24
+- Optional build environment variable: `ELECTRON_SKIP_BINARY_DOWNLOAD=1`
+
+Cloudflare uses `wrangler.jsonc` to publish `dist-web/`. Keep the other storefront Workers separate. The public workers.dev address is shown after deployment. Later pushes to main rebuild the web version; the existing Windows release workflow remains available.
+
+The web data adapter and responsive overrides live in `web/`. The build copies a specific list of browser libraries, fonts, flags, data, and upstream license notices; it never publishes the full repository or Electron preload/main process.
 
 ## Download for Windows
 

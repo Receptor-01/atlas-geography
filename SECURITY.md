@@ -15,3 +15,5 @@ Include the affected version, reproduction steps, expected impact, and any relev
 Atlas is an offline-first desktop application. It does not collect personal information, create user accounts, load remote application code, or transmit quiz results. The Electron renderer runs with Node.js disabled, context isolation enabled, Chromium sandboxing enabled, navigation blocked, new windows blocked, and a restrictive Content Security Policy. Its preload bridge exposes one read-only operation for loading bundled geography data.
 
 Local progress is stored through the browser's local storage on the user's computer.
+
+The web build is a static site. Its separate data adapter reads bundled JSON over same-origin HTTPS, with no Electron bridge or Node.js runtime in the browser. It uses a restrictive Content Security Policy, makes no external data API calls, and sends no quiz results. The hosting provider still receives ordinary HTTP requests. Only the allowlisted generated `dist-web/` assets are deployed; source tooling and credentials are not included.
